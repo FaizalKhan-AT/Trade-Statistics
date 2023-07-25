@@ -43,11 +43,10 @@ app.post("/api/fetchStockData", (req, res) => {
     .then(async (response) => {
       switch (response.data.status) {
         case "OK":
-          if (ticker)
-            return res.status(200).send({
-              status: "ok",
-              data: response.data,
-            });
+          return res.status(200).send({
+            status: "ok",
+            data: response.data,
+          });
         case "NOT_FOUND":
           return res
             .status(404)
