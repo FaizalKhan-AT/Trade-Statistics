@@ -1,0 +1,56 @@
+/* * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+} */
+body {
+  background: #000;
+  color: #e8eaed;
+}
+.form-control,
+.btn {
+  box-shadow: none !important;
+}
+.form-control:focus {
+  border-color: rgba(0, 222, 0, 0.5);
+}
+.card {
+  background: #1e1d1d !important;
+}
+.card-pill,
+td {
+  border-radius: 5px;
+  font-weight: 600;
+  padding: 5px 15px;
+  text-align: center;
+}
+td {
+  padding: 10px 15px;
+}
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.pill-green {
+  background-color: rgba(0, 224, 0, 0.2);
+  color: rgb(0, 222, 0);
+}
+.pill-red {
+  background-color: rgba(210, 0, 0, 0.2);
+  color: rgb(224, 0, 0);
+}
+.pill-purple {
+  background-color: rgba(161, 4, 182, 0.2);
+  color: rgb(178, 25, 255);
+}
+.text-low {
+  color: rgb(224, 0, 0);
+}
+.text-high {
+  color: rgb(0, 222, 0);
+}
+.text-vol {
+  color: rgb(178, 25, 255);
+}
