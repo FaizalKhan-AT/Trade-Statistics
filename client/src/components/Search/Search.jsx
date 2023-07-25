@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 const Search = ({ handleSubmit }) => {
   const [formData, setFormData] = useState({});
   const handleChange = (e) => {
@@ -9,15 +8,6 @@ const Search = ({ handleSubmit }) => {
     e.preventDefault();
     handleSubmit(formData);
   };
-  const fetchTickers = () => {
-    if (formData.searchKey === "") return;
-    axios
-      .get(`/fetchTickers/${formData.searchKey}`)
-      .then((res) => console.log(res.data));
-  };
-  // useEffect(() => {
-  //   fetchTickers();
-  // }, [formData.searchKey]);
   return (
     <form
       onSubmit={handleOnSubmit}
@@ -25,7 +15,7 @@ const Search = ({ handleSubmit }) => {
     >
       <div className="col-md-4">
         <input
-          className="form-control bg-dark text-light"
+          className="form-control bg-dark text-light text-uppercase"
           type="search"
           onChange={handleChange}
           name="searchKey"

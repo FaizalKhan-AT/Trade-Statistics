@@ -7,8 +7,10 @@ import Spinner from "../components/Loading/Spinner";
 const Home = () => {
   const [stockDetails, setStockDetails] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const handleSubmit = (data) => {
     setLoading(true);
+    setError("");
     axios
       .post("/fetchStockData", data, {
         headers: {
@@ -21,13 +23,18 @@ const Home = () => {
             setStockDetails(res.data.data);
             break;
           case "error":
-            console.error(res.data.error);
+            setError(res.data.error);
+            break;
+          default:
+            break;
         }
         setLoading(false);
       })
-      .catch((err) => console.error("Something went wrong"));
+      .catch((err) => {
+        setLoading(false);
+        setError("Data not found :(");
+      });
   };
-  console.log(stockDetails);
   return (
     <>
       <MainNav />
@@ -37,7 +44,13 @@ const Home = () => {
         <br />
         <br />
         <div className="my-5 text-center">
-          {loading ? <Spinner size="lg" /> : <StockCard stock={stockDetails} />}
+          {loading ? (
+            <Spinner size="lg" />
+          ) : error ? (
+            <h3>{error}</h3>
+          ) : (
+            <StockCard stock={stockDetails} />
+          )}
         </div>
       </main>
     </>

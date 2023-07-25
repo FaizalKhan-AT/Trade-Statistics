@@ -40,10 +40,14 @@ app.post("/api/fetchStockData", (req, res) => {
         process.env.POLYGON_API_KEY
       }`
     )
-    .then((response) => {
+    .then(async (response) => {
       switch (response.data.status) {
         case "OK":
-          return res.status(200).send({ status: "ok", data: response.data });
+          if (ticker)
+            return res.status(200).send({
+              status: "ok",
+              data: response.data,
+            });
         case "NOT_FOUND":
           return res
             .status(404)
